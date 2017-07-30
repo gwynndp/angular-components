@@ -30,6 +30,13 @@ gulp.task('build', ['todo'], function() {
   the plugin takes the webpack.config as an arg.
   be sure to stream the result to the destination path
    */
+
+  // Do something that "builds stuff"
+  var stream = gulp.src(paths.entry)
+  .pipe(webpack(require('./webpack.config')))
+  .pipe(gulp.dest(paths.dest));
+
+  return stream;
 });
 
 gulp.task('serve', function() {
