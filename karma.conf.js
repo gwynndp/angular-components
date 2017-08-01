@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        { /*'change to the spec bundle',*/ watched: false }
+        { pattern: 'spec.bundle.js', watched: false }
     ],
 
 
@@ -37,6 +37,10 @@ module.exports = function(config) {
             loaders: [
                 /* add the appropriate loaders */
                 /* almost the same as the webpack.config */
+                { test: /\.html$/, loader: 'raw' },
+                { test: /\.styl$/, loader: 'style!css!stylus' },
+                { test: /\.css/, loader: 'style!css' },
+                { test: /\.js$/, loader: 'babel-loader', exclude: [/client\/lib/, /node_modules/] }
             ]
         },
 
@@ -79,5 +83,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
-  })
-}
+  });
+};

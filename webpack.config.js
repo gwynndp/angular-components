@@ -16,9 +16,20 @@ module.exports = {
       { test: /\.html$/, loader: 'raw' },
       { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css/, loader: 'style!css' },
-      { test: /\.js$/, loader: 'babel?stage=1', exclude: [/client\/lib/, /node_modules/, /\.spec\.js/] }
+      { test: /\.js$/, loader: 'babel-loader', exclude: [/client\/lib/, /node_modules/, /\.spec\.js/] }
     ]
   },
+
+  // plugins: {
+  //   new webpack.LoaderOptionsPlugin({
+  //     test: /\.styl$/,
+  //     options: {
+  //       stylus: {
+  //         use: [require('jeet')(), require('rupture')()]
+  //       }
+  //     }
+  //   })
+  // }
 
   stylus: {
     use: [require('jeet')(), require('rupture')()]
